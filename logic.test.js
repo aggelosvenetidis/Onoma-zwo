@@ -3,10 +3,10 @@ const test = require('node:test');
 const assert = require('node:assert');
 delete process.env.ANTHROPIC_API_KEY; // χωρίς LLM στα τεστ
 
-const { normalize } = require('../server/validation/normalize');
-const { validateWord } = require('../server/validation/validator');
-const { gibberishReason, startsWithLetter } = require('../server/validation/checks');
-const { scoreRound } = require('../server/scoring');
+const { normalize } = require('./normalize');
+const { validateWord } = require('./validator');
+const { gibberishReason, startsWithLetter } = require('./checks');
+const { scoreRound } = require('./scoring');
 
 test('κανονικοποίηση', () => {
   assert.strictEqual(normalize('  Άρης!! '), 'ΑΡΗΣ');

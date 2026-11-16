@@ -5,8 +5,8 @@
 // =====================================================================
 const crypto = require('crypto');
 const config = require('./config');
-const { validateWord } = require('./validation/validator');
-const { sanitizeDisplay } = require('./validation/normalize');
+const { validateWord } = require('./validator');
+const { sanitizeDisplay } = require('./normalize');
 const { scoreRound, isEffectivelyValid } = require('./scoring');
 
 const R = config.ROOM;

@@ -3,10 +3,10 @@ const test = require('node:test');
 const assert = require('node:assert');
 delete process.env.ANTHROPIC_API_KEY;
 
-const config = require('../server/config');
+const config = require('./config');
 config.ROOM.COUNTDOWN_MS = 30;       // γρήγορο τεστ
 config.ROOM.SUBMIT_GRACE_MS = 10;
-const { RoomManager } = require('../server/rooms');
+const { RoomManager } = require('./rooms');
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

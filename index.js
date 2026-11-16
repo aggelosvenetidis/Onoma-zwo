@@ -9,11 +9,11 @@ const express = require('express');
 const { Server } = require('socket.io');
 const config = require('./config');
 const { RoomManager } = require('./rooms');
-const llm = require('./validation/llm');
+const llm = require('./llm');
 
 const PORT = process.env.PORT || 3000;
 const ORIGIN = process.env.CLIENT_ORIGIN || '*';
-const PUBLIC = path.join(__dirname, '..', 'public');
+const PUBLIC = __dirname; // όλα τα αρχεία στον ίδιο φάκελο (όπως στο GitHub repo)
 
 const app = express();
 app.disable('x-powered-by');
@@ -27,7 +27,12 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(PUBLIC, { maxAge: '1h', index: false }));
+// Σερβίρουμε ΜΟΝΟ τα αρχεία του frontend — ποτέ τον κώδικα του server
+const PUBLIC_FILES = new Set(['style.css', 'app.js', 'manifest.json', 'sw.js', 'icon.svg']);
+app.get('/:file', (req, res, next) => {
+  if (!PUBLIC_FILES.has(req.params.file)) return next();
+  res.sendFile(path.join(PUBLIC, req.params.file), { maxAge: req.params.file === 'sw.js' ? 0 : '1h' });
+});
 
 // Δημόσιες ρυθμίσεις για τη φόρμα δημιουργίας δωματίου
 app.get('/api/config', (req, res) => {

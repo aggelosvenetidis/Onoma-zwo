@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { normalize } = require('./normalize');
 
-const DIR = path.join(__dirname, '..', 'data', 'dictionaries');
+const DIR = __dirname;
 
 /** Διαβάζει ένα αρχείο λέξεων και επιστρέφει Set κανονικοποιημένων λέξεων. */
 function loadList(file) {

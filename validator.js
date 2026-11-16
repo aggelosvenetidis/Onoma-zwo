@@ -9,7 +9,7 @@
 //   key: string   // κανονική μορφή για σύγκριση "ίδιας λέξης" μεταξύ παικτών
 // }
 // =====================================================================
-const config = require('../config');
+const config = require('./config');
 const { normalize } = require('./normalize');
 const { Dictionary } = require('./dictionary');
 const { startsWithLetter, gibberishReason, isProfane } = require('./checks');

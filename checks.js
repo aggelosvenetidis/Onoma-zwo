@@ -2,7 +2,7 @@
 // checks.js — Γρήγοροι τοπικοί έλεγχοι: αρχικό γράμμα, μήκος,
 // "τυχαίο string" και ακατάλληλες λέξεις.
 // =====================================================================
-const config = require('../config');
+const config = require('./config');
 const { lemmaCandidates } = require('./dictionary');
 const { normalize } = require('./normalize');
 
@@ -46,7 +46,7 @@ const fs = require('fs');
 const path = require('path');
 const PROFANITY = new Set();
 (function loadProfanity() {
-  const f = path.join(__dirname, '..', 'data', 'profanity.txt');
+  const f = path.join(__dirname, 'profanity.txt');
   if (!fs.existsSync(f)) return;
   for (const line of fs.readFileSync(f, 'utf8').split(/\r?\n/)) {
     const t = line.trim();

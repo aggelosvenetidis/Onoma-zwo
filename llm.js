@@ -2,7 +2,7 @@
 // llm.js — Έλεγχος κατηγορίας μέσω Claude API (μόνο server-side).
 // Cache ανά (κατηγορία + λέξη) και αποφυγή διπλών ταυτόχρονων κλήσεων.
 // =====================================================================
-const config = require('../config');
+const config = require('./config');
 
 const API_URL = 'https://api.anthropic.com/v1/messages';
 const API_KEY = process.env.ANTHROPIC_API_KEY || '';
